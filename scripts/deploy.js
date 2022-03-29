@@ -14,12 +14,12 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  const Boxx = await hre.ethers.getContractFactory("Boxx");
+  const boxx = await Boxx.deploy();
 
-  await greeter.deployed();
+  await boxx.deployed();
 
-  console.log("Greeter deployed to:", greeter.address);
+  console.log("Greeter deployed to:", boxx.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
@@ -28,3 +28,5 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+// lEFT OFF AT 15:42*********** IN VIDEO

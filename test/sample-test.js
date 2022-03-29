@@ -21,11 +21,23 @@ describe("Greeter", function () {
 describe("MyNFT", function() {
   it("Should mint and transfer an NFT to someone", async function() {
     const Boxx = await ethers.getContractFactory("Boxx");
-    const Boxx = await Boxx.deploy();
-    await Boxx.deployed();
+    const boxx = await Boxx.deploy();
+    await boxx.deployed();
 
-    const recipient = '';
+    const recipient = ''; // 14:01 in video, run hardhat tests.
+    const metadataURI = '';
+
+    let balance = await boxx.balanceOf(recipient);
+    expect(blance).to.equal(0);
+
+    const newlyMintedToken = await boxx.payToMint(recipient, metadataURI, { value: ethers.utils.parseEther('0.01')}) // 14:55 in video, run hardhat tests.
+
+    // wait until the transaction is mined
+    await newlyMintedToken.wait();
+    balance = await boxx.balanceOf(recipient)
+    expect(balance).to.equal(1);
+
+    expect(await boxx.isContentOwned(metadataURI)).to.equal(true);
+
   })
 })
-
-// LEFT OFF AT 14:01 in the video.
